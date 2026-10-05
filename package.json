@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "producer": "tsx --watch src/producer.ts",
+    "consumer": "tsx --watch src/consumer.ts"
   },
   "keywords": [],
   "author": "",
@@ -20,6 +22,10 @@
   "type": "module",
   "devDependencies": {
     "@types/node": "^26.6.4",
+    "tsx": "^4.23.15",
     "typescript": "^7.0.2"
+  },
+  "dependencies": {
+    "amqplib": "^2.2.0"
   }
 }
