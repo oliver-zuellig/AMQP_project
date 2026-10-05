@@ -7,9 +7,13 @@ const connection = await amqp.connect(
 
 const channel = await connection.createChannel();
 
-await channel.assertQueue("telemetry");
+await channel.assertExchange(
+    "telemetry.exchange",
+    "fanout",
+    { durable: true }
+);
 
-function createSendingMessage() {
+function createSendingMessage(): void {
 
     const reading = () => {
         return {
@@ -21,9 +25,10 @@ function createSendingMessage() {
 
     for (let i = 0; i < 10; i++) {
         let product = reading();
-        console.log('product',product);
-        channel.sendToQueue(
-            "telemetry",
+        console.log('product', product);
+        channel.publish(
+            "telemetry.exchange",
+            "",
             Buffer.from(JSON.stringify(product))
         );
     }

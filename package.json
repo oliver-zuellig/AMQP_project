@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "producer": "tsx --watch src/producer.ts",
-    "consumer": "tsx --watch src/consumer.ts"
+    "consumer": "tsx --watch src/consumer.ts",
+    "alert_consumer": "tsx --watch src/alert_consumer.ts"
   },
   "keywords": [],
   "author": "",
